@@ -1,2 +1,2 @@
-# The-iot-module-K-is-based-on-freeRTOS.
+# K00
 This path stores project-related documents.

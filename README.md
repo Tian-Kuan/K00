@@ -1,2 +1,2 @@
-# The-iot-module-K-is-based-on-freeRTOS.
-The iot module K is based on freeRTOS.
+# K00
+The iot module K00 is based on freeRTOS.
