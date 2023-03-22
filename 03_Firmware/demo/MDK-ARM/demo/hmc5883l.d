@@ -32,3 +32,4 @@ demo\hmc5883l.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pcd.h
 demo\hmc5883l.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_usb.h
 demo\hmc5883l.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pcd_ex.h
 demo\hmc5883l.o: ..\Hardwave\inc\hmc5883l.h
+demo\hmc5883l.o: D:\MDK5\ARM\ARMCC\Bin\..\include\math.h

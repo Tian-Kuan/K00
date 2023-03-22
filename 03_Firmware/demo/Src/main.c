@@ -28,6 +28,7 @@
 /* USER CODE BEGIN Includes */
 #include "usbd_cdc_if.h"
 #include "hmc5883l.h"
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -47,7 +48,10 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-
+	  int16_t mag_x;
+	  int16_t mag_y;
+	  int16_t mag_z;
+	  char* des;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -95,6 +99,7 @@ int main(void)
   MX_USB_DEVICE_Init();
   /* USER CODE BEGIN 2 */
   
+  HMC5883l_Init();
 	//HMC5883l_Init();
 	
   /* USER CODE END 2 */
@@ -104,14 +109,15 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-//	  int16_t *mag_x;
-//	  int16_t *mag_y;
-//	  int16_t *mag_z;
-//	  HMC5883l_Read(mag_x, mag_y, mag_z);
-//	  CDC_Transmit_FS((uint8_t*)mag_x, 1);
-//	  HAL_Delay(1000);
-	CDC_Transmit_FS((uint8_t*) "Buff", 4);//(uint8_t* Buf, uint16_t Len
-	HAL_Delay(1000);
+	  HAL_Delay(1000);
+	  
+	  //HMC5883l_Read(&mag_x, &mag_y, &mag_z);
+	  //CDC_Transmit_FS((uint8_t*)&mag_x, 6);
+	  
+	  des=(char *)get_direction_str;
+	  CDC_Transmit_FS((uint8_t*)get_direction_str(), 2);
+	  
+//	  CDC_Transmit_FS((uint8_t*) "Buff", 4);//(uint8_t* Buf, uint16_t Len
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */

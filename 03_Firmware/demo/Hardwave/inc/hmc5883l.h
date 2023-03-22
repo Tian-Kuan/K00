@@ -2,7 +2,7 @@
 #define __HMC5883l_H
  
 /* Includes ------------------------------------------------------------------*/
-//#include "iic.h"  
+#include "main.h"
 
 /* Exported macro ------------------------------------------------------------*/
 
@@ -70,9 +70,27 @@
 #define HMC5883_REG_MODE_MR_IDLE2    (0x03) 
 
 
+/* 通过枚举先定义出8个方位 */    
+enum direction_type_em {
+    DIRECTION_NE = 0,  
+    DIRECTION_E,  
+    DIRECTION_SE, 
+    DIRECTION_S,  
+    DIRECTION_SW, 
+    DIRECTION_W,  
+    DIRECTION_NW, 
+    DIRECTION_N,  
+};
+
+
+
 /* Exported functions ------------------------------------------------------- */
 void HMC5883l_Init(void);
 void HMC5883l_Read(int16_t *mag_x, int16_t *mag_y, int16_t *mag_z);
-
+static int i2cWrite(uint8_t reg_, uint8_t Data);
+static int i2cRead(uint8_t reg_, uint8_t len, uint8_t* buf);
+void HMC5883l_Angle_xz(double *angle_xz);
+unsigned char get_direction(void);
+char* get_direction_str();
 #endif
 
