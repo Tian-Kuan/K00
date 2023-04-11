@@ -109,7 +109,7 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-	  HAL_Delay(1000);
+	  HAL_Delay(100);
 	  
 	  //HMC5883l_Read(&mag_x, &mag_y, &mag_z);
 	  //CDC_Transmit_FS((uint8_t*)&mag_x, 6);

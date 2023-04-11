@@ -87,13 +87,59 @@ void HMC5883l_Angle_xz(double *angle_xz)
     //angle_yz = atan2(y,z)*(180/3.14159265)+180;
 }
 
+void HMC5883l_Calibrate_Angle_xz(double *angle_xz)
+{
+	int16_t m_x, m_y, m_z;
+	int16_t xMin=0x7FFF,yMin=0x7FFF,zMin=0x7FFF;
+	int16_t xMax=0x8000,yMax=0x8000,zMax=0x8000;
+	int16_t Xoffset = 0,Yoffset = 0,Zoffset = 0;
+	double Kx,Ky,Kz;
+	double X,Y,Z;
+	for(int i=0;i<50;i++)  
+	{  
+		HMC5883l_Read(&m_x, &m_y, &m_z); 
+		// 计算最大值与最小值  
+		// 计算传感器绕X,Y,Z轴旋转时的磁场强度最大值和最小值  
+		if(m_x > xMax)  
+			xMax = m_x;
+		if(m_x < xMin)  
+			xMin = m_x;
+		if(m_y > yMax)  
+			yMax = m_y;
+		if(m_y < yMin)  
+			yMin = m_y;
+		if(m_y > zMax)  
+			zMax = m_y;
+		if(m_y < zMin)  
+			zMin = m_y;
+		HAL_Delay(100);
+	}
+//偏移校正
+    Xoffset = (xMax + xMin)/2;
+    Yoffset = (yMax + yMin)/2;
+    Zoffset = (zMax + zMin)/2;
+//系数校正
+    Kx = 1;
+    Ky = (xMax - xMin)/(yMax - yMin);
+    Kz = (xMax - xMin)/(zMax - zMin);
+//将椭圆模型校准成圆形后，获取的x，y，z值
+    X = Kx * (m_x - Xoffset);
+    Y = Ky * (m_y - Yoffset);
+    Z = Kz * (m_z - Zoffset);
+	
+//atan2求出的angle取值范围为[-180,180]
+    //angle_xy = atan2(y,x)*(180/3.14159265)+180;
+   *angle_xz = atan2(m_x,m_z)*(180/3.14159265)+180;
+    //angle_yz = atan2(y,z)*(180/3.14159265)+180;
+}
 
 /* 再通过角度范围判断，赋值相应的枚举值 */
 unsigned char get_direction(void)
 {
 	unsigned char Direction;
 	double angle_xz_val;
-	HMC5883l_Angle_xz(&angle_xz_val);
+	//HMC5883l_Angle_xz(&angle_xz_val);
+	HMC5883l_Calibrate_Angle_xz(&angle_xz_val);
     if (angle_xz_val >= 22 && angle_xz_val <= 67) {
         Direction = DIRECTION_NE;
     } else if (angle_xz_val >= 68  && angle_xz_val <= 111) {
@@ -112,7 +158,6 @@ unsigned char get_direction(void)
         Direction = DIRECTION_N;
     }
     return Direction;
- 
 }
  
 /* 通过枚举值赋值相应的字符串，实现通过角度判断方位 */
@@ -130,4 +175,5 @@ char* get_direction_str()
     }
     return 0;
 }
+
 

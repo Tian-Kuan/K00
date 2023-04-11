@@ -152,9 +152,9 @@
         <Bp>
           <Number>0</Number>
           <Type>0</Type>
-          <LineNumber>97</LineNumber>
+          <LineNumber>123</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134236020</Address>
+          <Address>134226190</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -163,39 +163,7 @@
           <BreakIfRCount>1</BreakIfRCount>
           <Filename>..\Hardwave\src\hmc5883l.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\demo\../Hardwave/src/hmc5883l.c\97</Expression>
-        </Bp>
-        <Bp>
-          <Number>1</Number>
-          <Type>0</Type>
-          <LineNumber>121</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>134236302</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>1</BreakIfRCount>
-          <Filename>..\Hardwave\src\hmc5883l.c</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression>\\demo\../Hardwave/src/hmc5883l.c\121</Expression>
-        </Bp>
-        <Bp>
-          <Number>2</Number>
-          <Type>0</Type>
-          <LineNumber>124</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>134236330</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>1</BreakIfRCount>
-          <Filename>..\Hardwave\src\hmc5883l.c</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression>\\demo\../Hardwave/src/hmc5883l.c\124</Expression>
+          <Expression>\\demo\../Hardwave/src/hmc5883l.c\123</Expression>
         </Bp>
       </Breakpoint>
       <WatchWindow1>
@@ -248,6 +216,11 @@
           <count>9</count>
           <WinNumber>1</WinNumber>
           <ItemText>m_z</ItemText>
+        </Ww>
+        <Ww>
+          <count>10</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>Xoffset</ItemText>
         </Ww>
       </WatchWindow1>
       <MemoryWindow1>
@@ -704,7 +677,7 @@
 
   <Group>
     <GroupName>Hardwave</GroupName>
-    <tvExp>0</tvExp>
+    <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -712,7 +685,7 @@
       <GroupNumber>5</GroupNumber>
       <FileNumber>31</FileNumber>
       <FileType>1</FileType>
-      <tvExp>1</tvExp>
+      <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\Hardwave\src\hmc5883l.c</PathWithFileName>
